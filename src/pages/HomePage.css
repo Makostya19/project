@@ -1,0 +1,62 @@
+.page {
+  padding: 40px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  min-height: 100vh;
+  color: white;
+}
+
+.grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 140px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  color: black;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  min-width: 280px;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #ff4757;
+  color: white;
+  cursor: pointer;
+}
+
+.card p,
+.modal p,
+.modal h2,
+h1 {
+  color: #000;
+}

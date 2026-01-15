@@ -14,6 +14,7 @@ export default function PokeballPage() {
     const data = await res.json();
 
     setPokemon({
+      id: data.id,
       name: data.name,
       image: data.sprites.front_default,
     });
@@ -26,12 +27,20 @@ export default function PokeballPage() {
       const success = Math.random() < 0.5;
 
       if (success) {
-        const stored = JSON.parse(localStorage.getItem("caughtPokemons")) || [];
-        localStorage.setItem(
-          "caughtPokemons",
-          JSON.stringify([...stored, pokemon])
-        );
-        setMessage("Покемон пойман!");
+        const stored =
+          JSON.parse(localStorage.getItem("caughtPokemons")) || [];
+
+        const exists = stored.some(p => p.id === pokemon.id);
+
+        if (!exists) {
+          localStorage.setItem(
+            "caughtPokemons",
+            JSON.stringify([...stored, pokemon])
+          );
+          setMessage("Покемон пойман!");
+        } else {
+          setMessage("Этот покемон уже пойман");
+        }
       } else {
         setMessage("Покемон убежал!");
       }
@@ -48,13 +57,13 @@ export default function PokeballPage() {
         alt="Pokeball"
         style={{
           width: 200,
-          transition: "transform 0.5s",
+          transition: "0.5s",
           transform: throwing ? "scale(1.2) rotate(360deg)" : "none",
         }}
       />
 
       <div style={{ marginTop: 20 }}>
-        <button onClick={huntPokemon}>Охотиться за покемонами</button>
+        <button onClick={huntPokemon}>Охотиться</button>
       </div>
 
       {pokemon && (
@@ -71,3 +80,4 @@ export default function PokeballPage() {
     </div>
   );
 }
+
