@@ -54,3 +54,52 @@ h1, h2, h3, p {
   cursor: pointer;
   font-weight: bold;
 }
+
+.pokeball-page {
+  text-align: center;
+  padding: 40px;
+}
+
+.pokeball {
+  width: 200px;
+  transition: 0.5s;
+}
+
+.pokeball.throwing {
+  transform: scale(1.2) rotate(360deg);
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.pokemon-card {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.message {
+  margin-top: 16px;
+}
+
+.nav-link {
+  color: #2a75bb;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: white;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+.nav-link.active {
+  background: #ffcb05;
+  color: #1a1a1a;
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ball from "./assets/ball.svg";
+import "./index.css";
 
 export default function PokeballPage() {
   const [pokemon, setPokemon] = useState(null);
@@ -51,33 +52,26 @@ export default function PokeballPage() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: 40 }}>
+    <div className="pokeball-page">
       <img
         src={ball}
         alt="Pokeball"
-        style={{
-          width: 200,
-          transition: "0.5s",
-          transform: throwing ? "scale(1.2) rotate(360deg)" : "none",
-        }}
+        className={`pokeball ${throwing ? "throwing" : ""}`}
       />
 
-      <div style={{ marginTop: 20 }}>
+      <div className="actions">
         <button onClick={huntPokemon}>Охотиться</button>
       </div>
 
       {pokemon && (
-        <div style={{ marginTop: 20 }}>
+        <div className="pokemon-card">
           <h3>{pokemon.name}</h3>
           <img src={pokemon.image} alt={pokemon.name} />
-          <div>
-            <button onClick={throwBall}>Кинуть покебол</button>
-          </div>
+          <button onClick={throwBall}>Кинуть покебол</button>
         </div>
       )}
 
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }
-

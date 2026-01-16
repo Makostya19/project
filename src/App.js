@@ -1,20 +1,24 @@
-import { useState } from "react";
+import { Routes, Route, NavLink } from "react-router-dom";
 import PokeballPage from "./PokeballPage";
 import HomePage from "./pages/HomePage";
 import "./index.css";
 
 function App() {
-  const [page, setPage] = useState("pokeball");
-
   return (
     <>
       <nav className="nav">
-        <button onClick={() => setPage("pokeball")}>Pokeball</button>
-        <button onClick={() => setPage("home")}>Home</button>
+        <NavLink to="/" className="nav-link">
+          Home
+        </NavLink>
+        <NavLink to="/pokeball" className="nav-link">
+          Pokeball
+        </NavLink>
       </nav>
 
-      {page === "pokeball" && <PokeballPage />}
-      {page === "home" && <HomePage />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/pokeball" element={<PokeballPage />} />
+      </Routes>
     </>
   );
 }

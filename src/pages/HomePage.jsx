@@ -16,7 +16,16 @@ function HomePage() {
     setSelectedPokemon(data);
   };
 
-  const closeModal = () => setSelectedPokemon(null);
+  const closeModal = () => {
+    setSelectedPokemon(null);
+  };
+
+  const releasePokemon = (id) => {
+    const updated = pokemons.filter((p) => p.id !== id);
+    setPokemons(updated);
+    localStorage.setItem("caughtPokemons", JSON.stringify(updated));
+    setSelectedPokemon(null);
+  };
 
   return (
     <div className="page">
@@ -39,17 +48,31 @@ function HomePage() {
         <div className="modal-bg" onClick={closeModal}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedPokemon.name}</h2>
+
             <img
               src={selectedPokemon.sprites.front_default}
               alt={selectedPokemon.name}
             />
+
             <p>Height: {selectedPokemon.height}</p>
             <p>Weight: {selectedPokemon.weight}</p>
             <p>
               Types:{" "}
-              {selectedPokemon.types.map(t => t.type.name).join(", ")}
+              {selectedPokemon.types
+                .map((t) => t.type.name)
+                .join(", ")}
             </p>
-            <button onClick={closeModal}>Close</button>
+
+            <div className="modal-buttons">
+              <button
+                className="release"
+                onClick={() => releasePokemon(selectedPokemon.id)}
+              >
+                Освободить
+              </button>
+
+              <button onClick={closeModal}>Close</button>
+            </div>
           </div>
         </div>
       )}

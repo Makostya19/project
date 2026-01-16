@@ -60,3 +60,7 @@
 h1 {
   color: #000;
 }
+
+.modal button + button {
+  margin-left: 10px;
+}
