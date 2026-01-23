@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ball from "./assets/ball.svg";
-import "./index.css";
+import ball from "../assets/ball.svg";
+import "../index.css";
 
 export default function PokeballPage() {
   const [pokemon, setPokemon] = useState(null);

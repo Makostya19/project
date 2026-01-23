@@ -1,5 +1,5 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import PokeballPage from "./PokeballPage";
+import PokeballPage from "./pages/PokeballPage";
 import HomePage from "./pages/HomePage";
 import "./index.css";
 
